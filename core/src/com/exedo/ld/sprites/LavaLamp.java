@@ -12,8 +12,8 @@ public class LavaLamp extends ClickableObject {
     private Animation<TextureRegion> animation;
     private float elapsedTime;
 
-    public LavaLamp(float x, float y, LudumDare game) {
-        super(x, y, game);
+    public LavaLamp(float x, float y, LudumDare game, int cooldown) {
+        super(x, y, game, cooldown);
 
         atlas = game.getManager().get("lavalamp.atlas", TextureAtlas.class);
         Array<TextureRegion> frames = new Array<TextureRegion>();
@@ -22,7 +22,6 @@ public class LavaLamp extends ClickableObject {
         }
         animation = new Animation<TextureRegion>(1/7f, frames);
         frames.clear();
-        cooldown = 15;
     }
 
     @Override

@@ -5,10 +5,9 @@ import com.exedo.ld.LudumDare;
 
 public class Tv extends ClickableObject {
 
-    public Tv(float x, float y, LudumDare game) {
-        super(x, y, game);
+    public Tv(float x, float y, LudumDare game, int cooldown) {
+        super(x, y, game, cooldown);
         setRegion(game.getManager().get("tv.png", Texture.class));
-        cooldown = 60;
     }
 
     @Override

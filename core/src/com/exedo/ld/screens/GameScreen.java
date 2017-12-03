@@ -48,17 +48,17 @@ public class GameScreen implements Screen {
         port = new FitViewport(LudumDare.V_WIDTH, LudumDare.V_HEIGHT, cam);
         cam.position.set(port.getWorldWidth() / 2, port.getWorldHeight() / 2, 0);
 
-        hud = new Hud(game.getBatch());
+        hud = new Hud(game.getBatch(), game);
 
-        lavaLamp = new LavaLamp(115, 390, game);
-        tv = new Tv(546, 390, game);
-        burger = new Burger(938, 390, game);
-        coin = new Bitcoin(115, 165, game);
-        battery = new Battery(545, 165, game);
-        phone = new Phone(938, 165, game);
+        lavaLamp = new LavaLamp(115, 390, game, 3);
+        tv = new Tv(546, 390, game, 5);
+        burger = new Burger(938, 390, game, 1);
+        coin = new Bitcoin(115, 165, game, 10);
+        battery = new Battery(545, 165, game, 2);
+        phone = new Phone(938, 165, game, 7);
 
         buy = game.getManager().get("buy.wav", Sound.class);
-        bgm = game.getManager().get("bgm.wav", Music.class);
+        bgm = game.getManager().get("bgm.ogg", Music.class);
         bgm.setLooping(true);
         bgm.setVolume(0.25f);
         bgm.play();
@@ -115,7 +115,7 @@ public class GameScreen implements Screen {
                 buy.play();
             }
             if(phone.getBoundingRectangle().contains(touchPos.x, touchPos.y) && phone.clickable) {
-                hud.buy(999.99f);
+                hud.buy(1000.0f);
                 phone.clickable = false;
                 buy.play();
             }
@@ -126,6 +126,7 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         if(hud.getMinutes() == 0 && hud.getSeconds() == 0) {
             game.setScreen(new EndScreen(game));
+            bgm.stop();
         }
 
         update(delta);

@@ -5,9 +5,10 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.exedo.ld.screens.GameScreen;
+import com.exedo.ld.screens.TitleScreen;
 
 public class LudumDare extends Game {
 	public static final int V_WIDTH = 1280;
@@ -21,7 +22,7 @@ public class LudumDare extends Game {
 		batch = new SpriteBatch();
 		manager = new AssetManager();
 		loadAssets();
-		setScreen(new GameScreen(this));
+		setScreen(new TitleScreen(this));
 	}
 
 	public void loadAssets() {
@@ -34,8 +35,13 @@ public class LudumDare extends Game {
 		manager.load("phone.png", Texture.class);
 		manager.load("cooldown.png", Texture.class);
 		manager.load("buy.wav", Sound.class);
-		manager.load("bgm.wav", Music.class);
+		manager.load("bgm.ogg", Music.class);
 		manager.load("lavalamp.atlas", TextureAtlas.class);
+		manager.load("cooldown.atlas", TextureAtlas.class);
+		manager.load("ui.fnt", BitmapFont.class);
+		manager.load("titlescreen.png", Texture.class);
+		manager.load("titlescreen.ogg", Music.class);
+		manager.load("endscreen.png", Texture.class);
 		manager.finishLoading();
 	}
 

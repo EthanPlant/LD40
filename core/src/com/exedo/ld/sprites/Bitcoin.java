@@ -6,10 +6,9 @@ import com.exedo.ld.LudumDare;
 
 public class Bitcoin extends ClickableObject {
 
-    public Bitcoin(float x, float y, LudumDare game) {
-        super(x, y, game);
+    public Bitcoin(float x, float y, LudumDare game, int cooldown) {
+        super(x, y, game, cooldown);
         setRegion(game.getManager().get("bitcoin.png", Texture.class));
-        cooldown = 100;
     }
 
     @Override

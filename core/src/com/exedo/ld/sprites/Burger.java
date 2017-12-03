@@ -5,10 +5,9 @@ import com.exedo.ld.LudumDare;
 
 public class Burger extends ClickableObject {
 
-    public Burger(float x, float y, LudumDare game) {
-        super(x, y, game);
+    public Burger(float x, float y, LudumDare game, int cooldown) {
+        super(x, y, game, cooldown);
         setRegion(game.getManager().get("burger.png", Texture.class));
-        cooldown = 3;
     }
 
     @Override

@@ -5,10 +5,9 @@ import com.exedo.ld.LudumDare;
 
 public class Phone extends ClickableObject {
 
-    public Phone(float x, float y, LudumDare game) {
-        super(x, y, game);
+    public Phone(float x, float y, LudumDare game, int cooldown) {
+        super(x, y, game, cooldown);
         setRegion(game.getManager().get("phone.png", Texture.class));
-        cooldown = 90;
     }
 
     @Override

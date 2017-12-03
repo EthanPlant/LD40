@@ -9,6 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = 960;
 		config.height = 544;
+		config.title = "Super Consumerism Sim 2k17 GOTY Edition";
 		new LwjglApplication(new LudumDare(), config);
 	}
 }

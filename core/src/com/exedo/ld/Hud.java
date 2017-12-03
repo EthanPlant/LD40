@@ -29,7 +29,7 @@ public class Hud implements Disposable {
     float counter;
     float timer;
 
-    public Hud(SpriteBatch sb) {
+    public Hud(SpriteBatch sb, LudumDare game) {
         money = 50000.00f;
         moneyFormat = NumberFormat.getInstance();
         moneyFormat.setMaximumFractionDigits(2);
@@ -43,13 +43,13 @@ public class Hud implements Disposable {
 
         Table table = new Table();
         table.top().left();
-        table.padTop(75);
-        table.padLeft(100);
+        table.padTop(109);
+        table.padLeft(155);
         table.setFillParent(true);
 
-        moneyLabel = new Label(moneyFormat.format(money), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        timeLabel = new Label(timeFormat.format(minutes) + ":" + timeFormat.format(seconds), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        table.add(timeLabel).spaceRight(1000);
+        moneyLabel = new Label("$" + moneyFormat.format(money), new Label.LabelStyle(game.getManager().get("ui.fnt", BitmapFont.class), new Color(0.17f, 0.45f, 0.16f, 1)));
+        timeLabel = new Label(timeFormat.format(minutes) + ":" + timeFormat.format(seconds), new Label.LabelStyle(game.getManager().get("ui.fnt", BitmapFont.class), new Color(0.17f, 0.45f, 0.16f, 1)));
+        table.add(timeLabel).spaceRight(780).width(100);
         table.add(moneyLabel);
         stage.addActor(table);
     }
@@ -58,14 +58,14 @@ public class Hud implements Disposable {
 
     public void buy(float value) {
         money -= value;
-        moneyLabel.setText(moneyFormat.format(money));
+        moneyLabel.setText("$" + moneyFormat.format(money));
     }
 
     public void income(float delta) {
         counter += delta;
         if(counter >= 5) {
             money += 50;
-            moneyLabel.setText(moneyFormat.format(money));
+            moneyLabel.setText("$" + moneyFormat.format(money));
             counter = 0;
         }
     }
